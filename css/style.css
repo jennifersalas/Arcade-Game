@@ -27,11 +27,20 @@ body {
   margin-top: -100px;
   left: 50%;
   margin-left: -175px;
-  opacity: .85;
+  /* opacity: .85; */
 }
 .winPopup.active {
   transition: 1s ease;
   display: block !important;
   width: 400px;
   height: auto;
+}
+
+.reset {
+  background: #5fc148;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 15px 30px;
+  margin: 20px;
+  border: none;
 }

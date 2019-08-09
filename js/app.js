@@ -66,7 +66,7 @@ class Enemy extends Sprite {
       }
       if (this.y == player.y && Math.abs(this.x - player.x) < colwidth * .75) {
         console.log("You lost");
-        this.game.reset();
+        player.location = [2,5]
 
     }
   }
@@ -89,8 +89,10 @@ class Player extends Sprite {
     }
   }
   update() {
-    if (this.location[1] == 0) {
+    if (this.location[1] == 0 && game.live) {
+      this.game.live = false;
       this.game.won();
+      console.log('won');
     }
   }
 }
@@ -104,11 +106,10 @@ class Game {
     console.log(this);
     this.reset();
   }
-  won() {
-    winAlert.classList.add('active');
-  }
+  won() { winAlert.classList.add('active'); }
   reset() {
     console.log('game has been set')
+    this.live = true;
     allEnemies = [];
     for (let i = 1; i < 5; i++) {
       allEnemies.push(new Enemy({location : [Math.floor(Math.random() * 5),i], game : this}));
@@ -118,8 +119,6 @@ class Game {
 }
 
 const game = new Game();
-
-
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -132,4 +131,9 @@ document.addEventListener('keyup', function(e) {
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
+});
+
+document.querySelector('.reset').addEventListener('click', _ =>{
+   winAlert.classList.remove('active');
+   game.reset();
 });
