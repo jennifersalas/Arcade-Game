@@ -1,3 +1,37 @@
 body {
     text-align: center;
+    width: 100vw;
+    height: 100vh;
+    background: #d5cabe url('../images/geometry2.png');
+    font-family: 'Roboto';
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+}
+
+.game-canvas {
+  position: relative;
+  top: -51px;
+}
+
+.winPopup {
+  background: #d5cabe url('../images/geometry2.png');
+  border-radius: 5px;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  margin:auto;
+  box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+  position: absolute;
+  top: 50%;
+  margin-top: -100px;
+  left: 50%;
+  margin-left: -175px;
+  opacity: .85;
+}
+.winPopup.active {
+  transition: 1s ease;
+  display: block !important;
+  width: 400px;
+  height: auto;
 }
